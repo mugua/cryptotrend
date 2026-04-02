@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(cuid())
+  email     String      @unique
+  name      String?
+  password  String
+  avatar    String?
+  locale    String      @default("en")
+  theme     String      @default("system")
+  watchlist Watchlist[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Watchlist {
+  id        String   @id @default(cuid())
+  userId    String
+  coinId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, coinId])
+}
+
+model TrendReport {
+  id             String   @id @default(cuid())
+  coinId         String
+  coinName       String
+  overallScore   Float
+  trendLevel     String
+  technicalScore Float
+  onchainScore   Float
+  sentimentScore Float
+  macroScore     Float
+  structureScore Float
+  factorsJson    String
+  summary        String
+  fullReport     String
+  createdAt      DateTime @default(now())
+
+  @@index([coinId, createdAt])
+}
+
+model MarketData {
+  id        String   @id @default(cuid())
+  coinId    String
+  price     Float
+  volume24h Float
+  marketCap Float
+  change24h Float
+  timestamp DateTime @default(now())
+
+  @@index([coinId, timestamp])
+}
+
+model FactorSnapshot {
+  id         String   @id @default(cuid())
+  coinId     String
+  category   String
+  factorName String
+  value      Float
+  score      Float
+  signal     String
+  timestamp  DateTime @default(now())
+
+  @@index([coinId, category, timestamp])
+}
