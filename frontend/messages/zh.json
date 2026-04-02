@@ -24,7 +24,8 @@
     "profile": "个人资料",
     "login": "登录",
     "register": "注册",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "collapse": "收起"
   },
   "dashboard": {
     "title": "仪表盘",

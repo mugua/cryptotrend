@@ -24,7 +24,8 @@
     "profile": "Profile",
     "login": "Login",
     "register": "Register",
-    "logout": "Logout"
+    "logout": "Logout",
+    "collapse": "Collapse"
   },
   "dashboard": {
     "title": "Dashboard",

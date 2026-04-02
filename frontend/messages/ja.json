@@ -24,7 +24,8 @@
     "profile": "プロフィール",
     "login": "ログイン",
     "register": "新規登録",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "collapse": "折りたたむ"
   },
   "dashboard": {
     "title": "ダッシュボード",
